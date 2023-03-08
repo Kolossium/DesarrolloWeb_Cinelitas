@@ -1,0 +1,91 @@
+<<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="card-header bg-black text-white"> </div>
+            <div class="card-body">
+
+           
+                <div class="container">
+                    <form th:object = "${pelicula}"
+                          th:action="@{/save}"
+                          method="POST">
+
+                        <!--------------------------- -->
+                        <div class="form-group mb-3 row">
+
+                        </div>
+
+                        <!---------------------------------------------------------------------------------------------------------------------------- -->
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-group mb-3 row">
+                            <label class="col-md-2 col-form-label" for="nombre">Nombre de pelicula</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control form-control-sm col-md-6" th:field="*{nombre}" placeholder= "Nombre pelicula" id="nombre" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+
+                        <!---------------------------------------------------------------------------------------------------------------------------- -->
+                        <div class="form-group mb-3 row">
+                            <label class="form-control-sm col-md-2 col-form-label" for="costo de la entrada">costo de la entrada</label>
+                            <div class="col-sm-10">
+                                <input type="number" th:field="*{costo de la entrada}" class="form-control form-control-sm col-md-6" placeholder= "costo de la entrada" id="costo de la entrada" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+
+                        <!---------------------------------------------------------------------------------------------------------------------------- -->
+                        <div class="form-group mb-3 row">
+                            <label class="form-control-sm col-form-label col-md-2" for="fecha">fecha</label>
+                            <div class="col-sm-10">
+                                <input type="date" th:field="*{fecha}" class="form-control form-control-sm col-md-6" placeholder= "fecha" id="fecha" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+
+                        <!---------------------------------------------------------------------------------------------------------------------------- -->
+                        <div class="form-group mb-3 row">
+                            <label class="form-control-sm col-form-label col-md-2" for="capacidad máxima">capacidad máxima</label>
+                            <div class="col-sm-10">
+                                <input type="number" th:field="*{capacidad máxima}" class="form-control form-control-sm col-md-6" placeholder= "capacidad máxima" id="capacidad máxima" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+
+                        <!---------------------------------------------------------------------------------------------------------------------------- -->
+                        <div class="form-group mb-3 row">
+                            <label class="form-control-sm col-form-label col-md-2" for="sala">sala</label>
+                            <div class="col-sm-10">
+                                <input type="number" th:field="*{sala}" class="form-control form-control-sm col-md-6" placeholder= "sala" id="sala" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+
+                        <!---------------------------------------------------------------------------------------------------------------------------- -->
+                        <div class="form-group mb-3 row">
+                            <label class="form-control-sm col-form-label col-md-2" for="paises">película</label>
+                            <div class="col-sm-10">
+                                <select th:field="*{película}" class="form-control form-control-sm col-md-6" id="película" aria-describedby="emailHelp">
+                                    <option th:each="x:${película}"
+                                            th:value="${x.id}"
+                                            th:text="${x.película}"/>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!--------------------------------------------------------------------------- -->
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-primary" value="Guardar" type="submit">Agreggar Pelicula</button>
+                        </div>
+                        <!--------------------------------------------------------------------------- -->
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
